@@ -2,7 +2,6 @@ package main
 
 import (
 	"user/handler"
-	pb "user/proto"
 
 	"github.com/micro/micro/v3/service"
 	"github.com/micro/micro/v3/service/logger"
