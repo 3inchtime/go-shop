@@ -1,23 +1,13 @@
-# User Service
+# User Server
 
-This is the User service
-
-Generated with
-
-```
-micro new user
+### Create Proto
+```bash
+docker run --rm -v $(pwd):$(pwd) -w $(pwd) -e ICODE=EE953D449C12DEEC cap1573/cap-protoc -I ./ --go_out=./ --micro_out=./ ./user.proto
 ```
 
-## Usage
+### Consul
+```bash
+docker pull consul
 
-Generate the proto code
-
-```
-make proto
-```
-
-Run the service
-
-```
-micro run .
+docker run -it -d -p 8500:8500 --name go-shop-consul consul
 ```

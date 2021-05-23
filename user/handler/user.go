@@ -29,8 +29,8 @@ func (u *User) Register(ctx context.Context, userRegisterRequest *pb.UserRegiste
 }
 
 func (u *User) Login(ctx context.Context, userLoginRequest *pb.UserLoginRequest, userLoginResponse *pb.UserLoginResponse) error {
-	isOk,err := u.UserService.CheckPwd(userLoginRequest.UserName,userLoginRequest.Pwd)
-	if err !=nil {
+	isOk, err := u.UserService.CheckPwd(userLoginRequest.UserName, userLoginRequest.Pwd)
+	if err != nil {
 		return err
 	}
 	userLoginResponse.IsSuccess = isOk
@@ -38,15 +38,15 @@ func (u *User) Login(ctx context.Context, userLoginRequest *pb.UserLoginRequest,
 }
 
 func (u *User) GetUserInfo(ctx context.Context, userInfoRequest *pb.UserInfoRequest, userInfoResponse *pb.UserInfoResponse) error {
-	user,err := u.UserService.GetUser(int(userInfoRequest.UserId), userInfoRequest.UserName)
-	if err !=nil {
+	user, err := u.UserService.GetUser(int(userInfoRequest.UserId), userInfoRequest.UserName)
+	if err != nil {
 		return err
 	}
 	userInfoResponse = userForResponse(user)
 	return nil
 }
 
-func userForResponse(user *model.User) *pb.UserInfoResponse  {
+func userForResponse(user *model.User) *pb.UserInfoResponse {
 	response := &pb.UserInfoResponse{}
 	response.UserName = user.UserName
 	response.UserId = int64(user.ID)

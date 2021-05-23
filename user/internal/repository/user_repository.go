@@ -9,7 +9,6 @@ import (
 )
 
 type IUserRepository interface {
-
 	FindUserByName(string) (*model.User, error)
 
 	FindUserByID(int) (*model.User, error)
@@ -31,7 +30,6 @@ func NewUserRepository() IUserRepository {
 	return &UserRepository{Dao: dao.NewDao()}
 }
 
-
 func (u *UserRepository) FindUserByID(id int) (user *model.User, err error) {
 	querySQL, err := u.Dao.DB.Prepare("SELECT * FROM user WHERE id = ?")
 	if err != nil {
@@ -48,7 +46,7 @@ func (u *UserRepository) FindUserByID(id int) (user *model.User, err error) {
 	return v, nil
 }
 
-func (u *UserRepository) CreateUser (user *model.User) (int, error) {
+func (u *UserRepository) CreateUser(user *model.User) (int, error) {
 	userName := user.UserName
 	email := user.Email
 	telephone := user.Telephone

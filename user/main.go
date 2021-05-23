@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+
 	// Create service
 	srv := micro.NewService(
 		micro.Name("user"),
@@ -20,7 +21,7 @@ func main() {
 	srv.Init()
 
 	userService := s.NewUserService(repository.NewUserRepository())
-	err := pb.RegisterUserHandler(srv.Server(),&handler.User{UserService:userService})
+	err := pb.RegisterUserHandler(srv.Server(), &handler.User{UserService: userService})
 
 	if err != nil {
 		fmt.Println(err)

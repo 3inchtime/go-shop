@@ -8,7 +8,7 @@ import (
 
 type IUserService interface {
 	AddUser(user *model.User) (int, error)
-	CheckPwd(userName string ,pwd string) (isOk bool,err error)
+	CheckPwd(userName string, pwd string) (isOk bool, err error)
 	GetUser(userID int, userName string) (*model.User, error)
 }
 
@@ -20,7 +20,7 @@ type UserService struct {
 	UserRepository repository.IUserRepository
 }
 
-func (u *UserService) AddUser (user *model.User) (int, error) {
+func (u *UserService) AddUser(user *model.User) (int, error) {
 	pwdByte, err := utils.GenPassword(user.HashPassword)
 	if err != nil {
 		return 0, err
@@ -30,25 +30,25 @@ func (u *UserService) AddUser (user *model.User) (int, error) {
 	return userID, err
 }
 
-func (u *UserService) CheckPwd (userName string ,pwd string) (isOk bool,err error){
-	user,err:=u.UserRepository.FindUserByName(userName)
-	if err!=nil {
-		return false,err
+func (u *UserService) CheckPwd(userName string, pwd string) (isOk bool, err error) {
+	user, err := u.UserRepository.FindUserByName(userName)
+	if err != nil {
+		return false, err
 	}
-	return utils.ValidPassword(pwd,user.HashPassword)
+	return utils.ValidPassword(pwd, user.HashPassword)
 }
 
-func (u *UserService) GetUser (userID int, userName string) (*model.User, error) {
+func (u *UserService) GetUser(userID int, userName string) (*model.User, error) {
 	if userName == "" {
 		user, err := u.UserRepository.FindUserByName(userName)
-		if err!=nil {
-			return nil,err
+		if err != nil {
+			return nil, err
 		}
 		return user, nil
 	} else {
 		user, err := u.UserRepository.FindUserByID(userID)
-		if err!=nil {
-			return nil,err
+		if err != nil {
+			return nil, err
 		}
 		return user, nil
 	}
