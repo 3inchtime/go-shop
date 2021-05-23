@@ -1,21 +1,30 @@
 package main
 
 import (
+	"fmt"
+	"github.com/micro/go-micro/v2"
+	"github.com/micro/go-micro/v2/logger"
 	"user/handler"
-
-	"github.com/micro/micro/v3/service"
-	"github.com/micro/micro/v3/service/logger"
+	"user/internal/repository"
+	s "user/internal/service"
+	pb "user/proto"
 )
 
 func main() {
 	// Create service
-	srv := service.New(
-		service.Name("user"),
-		service.Version("latest"),
+	srv := micro.NewService(
+		micro.Name("user"),
+		micro.Version("latest"),
 	)
 
-	// Register handler
-	pb.RegisterUserHandler(srv.Server(), new(handler.User))
+	srv.Init()
+
+	userService := s.NewUserService(repository.NewUserRepository())
+	err := pb.RegisterUserHandler(srv.Server(),&handler.User{UserService:userService})
+
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	// Run service
 	if err := srv.Run(); err != nil {

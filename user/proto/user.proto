@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package go.micro.service.user;
+
+service User {
+  rpc Register(UserRegisterRequest) returns (UserRegisterResponse) {}
+  rpc Login(UserLoginRequest) returns (UserLoginResponse) {}
+  rpc GetUserInfo(UserInfoRequest) returns (UserInfoResponse) {}
+}
+
+message UserInfoRequest {
+  string user_name = 1;
+  int32 user_id = 2;
+}
+
+message UserInfoResponse {
+  int64 user_id = 1;
+  string user_name = 2;
+  string email = 3;
+  string telephone = 4;
+  int32 age = 5;
+  string pwd = 6;}
+
+message UserRegisterRequest {
+  string user_name = 1;
+  string email = 2;
+  string telephone = 3;
+  int32 age = 4;
+  string pwd = 5;
+}
+
+message UserRegisterResponse {
+  string message = 1;
+}
+
+message UserLoginRequest {
+  string user_name = 1;
+  string pwd = 2;
+}
+
+message UserLoginResponse {
+  bool is_success = 1;
+}
