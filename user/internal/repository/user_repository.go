@@ -51,7 +51,7 @@ func (u *UserRepository) CreateUser(user *model.User) (int, error) {
 	email := user.Email
 	telephone := user.Telephone
 	age := user.Age
-	createTime := time.Now().Second()
+	createTime := time.Now().Unix()
 
 	insertSql, err := u.Dao.DB.Prepare("INSERT INTO user (user_name, email, telephone, age, create_time) VALUES (?, ?, ?, ?)")
 	if err != nil {
