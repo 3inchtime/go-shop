@@ -43,3 +43,12 @@ func TestDao_PaidPurchase(t *testing.T) {
 	}
 	fmt.Printf("Row ID: %d", rowID)
 }
+
+func TestDao_QueryPurchaseDetailByID(t *testing.T) {
+	var id = 1
+	p, err := d.QueryPurchaseDetailByID(id)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	fmt.Printf("%+v", p)
+}

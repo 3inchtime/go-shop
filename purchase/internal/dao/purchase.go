@@ -1,6 +1,7 @@
 package dao
 
 import (
+	"database/sql"
 	"github.com/sirupsen/logrus"
 	"purchase/internal/model"
 	"time"
@@ -62,3 +63,18 @@ func (d *Dao) PaidPurchase (pID int) (rows int64, err error) {
 	}
 	return res.RowsAffected()
 }
+
+func (d *Dao) QueryPurchaseDetailByID (id int) (p *model.Purchase, err error) {
+	querySQL, err := d.DB.Prepare("SELECT * FROM purchase WHERE id = ?")
+	if err != nil {
+		logrus.Errorf("Prepare Select SQL Error: %s", err.Error())
+		return nil, err
+	}
+	p = new(model.Purchase)
+	err = querySQL.QueryRow(id).Scan(&p.ID, &p.UserID, &p.TotalPrice, &p.PurchaseDetail, &p.PaidTime, &p.PaidStatus, &p.Status, p.CreateTime)
+	if err != nil && err != sql.ErrNoRows {
+		logrus.Errorf("Query PurcaseDetail Error: %s", err.Error())
+	}
+	return p, nil
+}
+

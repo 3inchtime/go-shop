@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package go.micro.service.purchase;
+
+service Purchase {
+    rpc QueryUserPurchase(QueryPurchaseRequest) returns (QueryPurchaseResponse) {};
+    rpc QueryPurchaseDetail(QueryPurchaseDetailRequest) returns (PurchaseDetail) {};
+}
+
+message PurchaseDetail {
+    int32 id = 1;
+    int32 user_id = 2;
+    int32 total_price = 3;
+    string purchase_detail = 4;
+    int32 paid_time = 5;
+    int32 paid_status = 6;
+    int32 status = 7;
+    int32 create_time = 8;
+}
+
+message QueryPurchaseRequest {
+    int32 user_id = 1;
+    int32 start_num = 2;
+    int32 num = 3;
+}
+
+message QueryPurchaseResponse {
+    repeated PurchaseDetail purchases = 1;
+}
+
+message QueryPurchaseDetailRequest {
+    int32 id = 1;
+}
