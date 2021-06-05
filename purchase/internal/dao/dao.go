@@ -16,7 +16,7 @@ func NewDao() *Dao {
 }
 
 func NewDB() *sql.DB {
-	Mysql, err := sql.Open("mysql", "root:123456@tcp(localhost:3306)/?charset=utf8mb4")
+	Mysql, err := sql.Open("mysql", "root:123456@tcp(localhost:3306)/go_shop?charset=utf8mb4")
 	if err != nil {
 		panic(err)
 	}

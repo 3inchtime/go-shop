@@ -17,14 +17,14 @@ func (d *Dao) QueryPurchaseByUserID(UserID, Start, Num int) ([]*model.Purchase, 
 	pList := make([]*model.Purchase, 0)
 	for rows.Next() {
 		var p = &model.Purchase{}
-		if err = rows.Scan(&p.ID, &p.UserID, &p.PurchaseDetail, &p.TotalPrice, &p.PaidStatus, &p.PaidTime, &p.CreateTime); err != nil {
-			logrus.Error("rows.Scan error(%v)", err)
+		if err = rows.Scan(&p.ID, &p.UserID, &p.TotalPrice, &p.PurchaseDetail, &p.PaidStatus, &p.PaidTime, &p.Status, &p.CreateTime); err != nil {
+			logrus.Errorf("rows.Scan error(%v)", err)
 			return nil, err
 		}
 		pList = append(pList, p)
 	}
 	err = rows.Err()
-	if err != nil{
+	if err != nil {
 		logrus.Errorf("Query Purchase Error: %s", err.Error())
 	}
 	return pList, nil

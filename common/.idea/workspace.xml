@@ -7,11 +7,8 @@
       <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/common.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user/common/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../user/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user/generate.go" beforeDir="false" afterPath="$PROJECT_DIR$/../user/generate.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user/handler/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/../user/handler/user.go" afterDir="false" />
@@ -34,9 +31,6 @@
   <component name="GOROOT" url="file:///usr/local/Cellar/go/1.14.4/libexec" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="GoLibraries">
-    <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1svgGYtYrL8AD51p3PZr1LfzfNz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
