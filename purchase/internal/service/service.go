@@ -2,12 +2,12 @@ package service
 
 import "purchase/internal/dao"
 
-type Service struct {
+type PurchaseService struct {
 	pDao      *dao.Dao
 }
 
-func New() (s *Service) {
-	return &Service{
+func New() (s *PurchaseService) {
+	return &PurchaseService{
 		pDao: dao.NewDao(),
 	}
 }
